@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}><head>
+    <title>结果页{% block title %}Result{% endblock %}</title>
+    {% block extrastyle %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}
+    <meta charset="UTF-8">
+<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<style>
+body{background-color:#B9BDEC;}
+#sousuo{text-align:center;
+        position:absolute;
+		width:50%;
+		top:20%;
+		left:25%;
+       }
+#tishi{
+       text-align:center;
+       position:absolute;
+	   top:5%;
+       left:10%;
+       font-family:"Microsoft Yahei";
+       font-size:30px;
+       }
+#seac{text-align:center;
+     background:#006;	
+     font-size:28px;
+	 color:#FFF;}  
+#kuang{text-align:center;
+	   width:200px;
+       line-height:30px;}
+#mcc{font-family:"楷体";
+     line-height:20px;
+     font-size:18px;
+    }
+#list{background-color:#FFF;
+    height:auto;
+    width:80%;
+	border:#000 dotted 1px;
+	position:relative;
+	padding:3%;
+	line-height:20px;
+	left:10%;
+	margin-bottom:20px;
+	bottom:0;
+	}
+p{ 
+	height:auto;
+    width:76%;
+	position:relative;
+	padding-left:30px;
+	left:15%;
+	margin-bottom:20px;}
+h1{ position:relative;
+    left:10%;}
+/*#sum{position:absolute;
+     top:10%;
+     width:80%;
+	 height:auto;
+	 border-bottom:30px;
+}*/
+#content{
+        width:70%;
+		height:auto;
+		position:absolute;
+		left:15%;
+		top:28%;
+		bottom:0%;}
+#dx{
+line-height:35px;
+font-size:13px;
+}
+#dnr{
+font-size:15px;
+}
+#drq{
+line-height:35px;
+font-size:13px;
+position:relative;
+right:0;
+}
+</style>
+<link rel="shortcut icon" href="hui.jpg" />
+
+</head>
+{% load i18n %}
+
+<body>
+<p id="tishi"><strong>请输入要查询的案件信息</strong>&nbsp;&nbsp;&nbsp;</p>
+
+<form method="get" action="/search/">
+<div id="sousuo">
+<label id="seac" for="lookFor">Search</label>
+<input type="text" name="q">
+<input type="submit" value="Search">
+ </div>
+ <input type="hidden" name="page" value="1"></form>
+<div id="content"><h1>Result</h1>
+<p><strong>查询的内容: <font color="red">{{ query }}</font><br>
+ 发现<font color="red">{{ count }}</font>条符合条件的内容，
+第<font color="red">{{ page }}</font>页,共<font color="red">{{ total_page  }}</font>页
+用时<font color="red">{{ time }}</font>秒</strong> </p>
+{% if results %}
+    {% for res in results %}
+   <div id="list"> <li><b> <a href={{res.link}} target="_blank"><span id="mcc">{% autoescape off %} {{ res.mc }} {% endautoescape %} </span></a></b></li>
+       <span id="dx"> {% autoescape off %} {{ res.fy }}&nbsp;&nbsp;{{ res.lx }}{% endautoescape %}</span><br/>
+       <span id="dnr">
+        {% autoescape off %} 
+            {{ res.nr}}...<br/></span>
+        <span id="drq"> {% autoescape off %} {{ res.gbrq }}{% endautoescape %}</span></div>
+        {% endautoescape %}
+    {% endfor %}
+{% else %}
+     <p>No contents found.</p>
+{% endif %}
+
+{% if nextpage > 2 %}
+<a href=http://{{ host  }}:{{ port  }}/search/?q={{ query }}&page={{ pastpage }}><span id="past">上一页</span></a>
+{% endif %}
+
+{% if nextpage <= total_page %}
+<a href=http://{{ host  }}:{{ port  }}/search/?q={{ query }}&page={{ nextpage }}><span id="next">下一页</span></a>
+{% endif %}
+
+</div></body>
+
+</html>

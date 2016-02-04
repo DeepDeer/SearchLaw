@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}><head>
+    <title>{% block title %}Search{% endblock %}</title>
+    {% block extrastyle %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}
+<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<!--html5默认设置-->
+<link rel="stylesheet" href="css/normalize.css">
+
+<!--css3必要样式-->
+<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+</head>
+{% load i18n %}
+
+<body>
+
+
+<section class="webdesigntuts-workshop">
+	<form action="/search/" method="get">
+      <input type="hidden" name="page" value="1">		    
+		<input type="search" name="q" placeholder="What are you looking for?">		    	
+		<button>Search</button>
+	</form>
+</section>
+
+</body>
+</html>

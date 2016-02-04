@@ -1,0 +1,124 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}><head>
+    <title>{% block title %}Search{% endblock %}</title>
+    {% block extrastyle %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}
+
+<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<meta http-equiv="Content-Type"/>
+<title>首页</title>
+</head>
+{% load i18n %}
+<style type="text/css">
+#sousuo{text-align:center;
+       }
+#tishi{
+	   text-align:center;
+       font-family:"Microsoft Yahei";
+       font-size:30px;
+       }
+#seac{text-align:center;
+     background:#006;	
+     font-size:28px;
+	 color:#FFF;}  
+#kuang{text-align:center;
+	   width:200px;
+       line-height:35px;}
+div{text-align:center}
+.cap{width:50px;
+height:30px;
+}
+#box1{width:100%;
+      height:20%;
+	  position:relative;
+	  top:25%;
+	  left:10%;
+	  text-align:left;}
+#info{width:100%;
+      height:auto;
+	   line-height:35px;
+      font-family:Arial, Helvetica, sans-serif;
+	  font-size:18px;
+}
+h3{padding-left:0;}
+#caipan{text-decoration:underline;}
+#box2{width:80%;
+      height:auto;}
+.content{text-indent:2em;
+	  text-align:left;}
+#box3{left:10%;
+	width:80%;
+      height:60%;
+	  position:relative;
+	
+	  /*background-color:#9FC;*/
+	  }
+#nana{width:100%;
+      height:100%;
+	  border:#000 dotted 1px;}
+/*html,body{background-image:url(tianping1.jpg);
+         background-repeat:no-repeat;
+		 background-position:right,top;
+}*/
+.but{background-color:#333;}
+</style>
+ <script type="text/javascript"> 
+        function hidetext()  
+		{  
+		var mychar = document.getElementById("nana").style.display="none";
+        
+		}  
+		function showtext()  
+		{  
+		var mychar = document.getElementById("nana").style.display="block";
+        
+		}
+    </script> 
+    <link rel="shortcut icon" href="picture/hui.jpg" /><!--改变网页标签图片-->
+
+</head>
+{% load i18n %}
+<body>
+<div class="main_separator"></div>
+<br /><p id="tishi"><strong>请输入要查询的案件信息</strong></p>
+<ul>
+    {{current_time}}
+</ul>
+
+<form method="get" action="/search/">
+<div id="sousuo">
+
+<label id="seac" for="lookFor">Search</label>
+<input type="text" name="q">
+<input type="submit" value="Search">
+
+</div>
+ <input type="hidden" name="page" value="1"></form>
+<div id="box3"> <div id="nana">
+  <iframe src="http://localhost/kibana/#dashboard/temp/AVIkeIKlJhD80uBZBJrK" frameborder="0" width=100% scrolling="auto" height=100% leftmargin="0" topmargin="auto"></iframe></div>
+  <form>
+       <input   class="but" type="image"  onclick="hidetext()" value=<img src="ic_backtop.png"/> 
+       <input class="but" type="image" onclick="showtext()" value=<img src="ic_backbottom.png"/>
+    </form>
+    </form></div> 
+ 
+<div id="box1">
+
+<ul id="info">
+<h2>信息来源</h2>
+   <li><strong>中文名称:</strong><span id="caipan"><a href="http://www.court.gov.cn/zgcpwsw/" target="_blank" title="中国裁判文书网">中国裁判文书网</a></span></li>
+   <li><strong>正式实施</strong>：2014年1月1日</li>
+   <li><strong><a href="http://baike.haosou.com/doc/7175222-7399251.html" target="_blank" title="好搜百科：中国裁判文书网">网站简介</a></strong>：
+   <div id="box2"><p class="content">2013年7月，《最高人民法院裁判文书上网公布暂行办法》正式实施。依据该办法，除法律规定的特殊情形外，最高法发生法律效力的判决书、裁定书、决定书一般均应在互联网公布。对于社会关注度高的案件，生效裁判文书应当在互联网公布。</p>
+
+<p class="content">2014年1月1日，《最高人民法院关于人民法院在互联网公布裁判文书的规定》正式实施。该司法解释明确，最高法在互联网设立中国裁判文书网，统一公布各级人民法院的生效裁判文书;中西部地区基层人民法院在互联网公布裁判文书的时间进度由高级人民法院决定，并报最高法备案。</p></div></li>
+   
+   </ul>
+   </div>
+  
+</body>
+</html>
+<body>
+
